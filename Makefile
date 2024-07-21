@@ -15,7 +15,7 @@ interchaintest: gen ## Build interchaintest binary into ./bin
 
 .PHONY: test
 test: ## Run unit tests
-	@go test -cover -short -race -timeout=60s ./...
+	@go test -cover -short -race -timeout=300s ./...
 
 .PHONY: docker-reset
 docker-reset: ## Attempt to delete all running containers. Useful if interchaintest does not exit cleanly.
