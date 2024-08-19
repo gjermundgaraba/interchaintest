@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	chantypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
-	ptypes "github.com/cosmos/ibc-go/v8/modules/core/05-port/types"
-	host "github.com/cosmos/ibc-go/v8/modules/core/24-host"
+	chantypes "github.com/cosmos/ibc-go/v9/modules/core/04-channel/types"
+	ptypes "github.com/cosmos/ibc-go/v9/modules/core/05-port/types"
+	host "github.com/cosmos/ibc-go/v9/modules/core/24-host"
 )
 
 // Relayer represents an instance of a relayer that can be support IBC.
@@ -311,28 +311,28 @@ func (opts CreateClientOptions) Validate() error {
 // and it avoids the relayer needing to be aware of a *testing.T.
 type RelayerExecReporter interface {
 	TrackRelayerExec(
-		// The name of the docker container in which this relayer command executed,
-		// or empty if it did not run in docker.
+	// The name of the docker container in which this relayer command executed,
+	// or empty if it did not run in docker.
 		containerName string,
 
-		// The command line passed to this invocation of the relayer.
+	// The command line passed to this invocation of the relayer.
 		command []string,
 
-		// The standard output and standard error that the relayer produced during this invocation.
+	// The standard output and standard error that the relayer produced during this invocation.
 		stdout, stderr string,
 
-		// The exit code of executing the command.
-		// This field may not be applicable for e.g. an in-process relayer implementation.
+	// The exit code of executing the command.
+	// This field may not be applicable for e.g. an in-process relayer implementation.
 		exitCode int,
 
-		// When the command started and finished.
+	// When the command started and finished.
 		startedAt, finishedAt time.Time,
 
-		// Any error that occurred during execution.
-		// This indicates a failure to execute,
-		// e.g. the relayer binary not being found, failure communicating with Docker, etc.
-		// If the process completed with a non-zero exit code,
-		// those details should be indicated between stdout, stderr, and exitCode.
+	// Any error that occurred during execution.
+	// This indicates a failure to execute,
+	// e.g. the relayer binary not being found, failure communicating with Docker, etc.
+	// If the process completed with a non-zero exit code,
+	// those details should be indicated between stdout, stderr, and exitCode.
 		err error,
 	)
 }
