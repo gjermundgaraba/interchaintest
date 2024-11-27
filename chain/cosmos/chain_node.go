@@ -693,6 +693,10 @@ func (tn *ChainNode) RecoverKey(ctx context.Context, keyName, mnemonic string) e
 	return err
 }
 
+func (tn *ChainNode) IsAboveSDK50(ctx context.Context) bool {
+	return tn.HasCommand(ctx, "genesis") && !tn.HasCommand(ctx, "export")
+}
+
 func (tn *ChainNode) IsAboveSDK47(ctx context.Context) bool {
 	// In SDK v47, a new genesis core command was added. This spec has many state breaking features
 	// so we use this to switch between new and legacy SDK logic.
@@ -960,11 +964,16 @@ func (tn *ChainNode) ExportState(ctx context.Context, height int64) (string, err
 		doc              = "state_export.json"
 		docPath          = path.Join(tn.HomeDir(), doc)
 		isNewerThanSdk47 = tn.IsAboveSDK47(ctx)
+		isNewerThanSdk50 = tn.IsAboveSDK50(ctx)
 		command          = []string{"export", "--height", fmt.Sprint(height), "--home", tn.HomeDir()}
 	)
 
 	if isNewerThanSdk47 {
 		command = append(command, "--output-document", docPath)
+	}
+
+	if isNewerThanSdk50 {
+		command = append([]string{"genesis"}, command...)
 	}
 
 	stdout, stderr, err := tn.ExecBin(ctx, command...)
