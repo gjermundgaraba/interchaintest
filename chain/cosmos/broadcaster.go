@@ -123,11 +123,6 @@ func (b *Broadcaster) GetClientContext(ctx context.Context, user User) (client.C
 		clientContext = opt(clientContext)
 	}
 
-	// Address Codec must be set.
-	if clientContext.AddressCodec == nil {
-		clientContext = clientContext.WithAddressCodec(clientContext.TxConfig.SigningContext().AddressCodec())
-	}
-
 	return clientContext, nil
 }
 
