@@ -7,6 +7,7 @@ import (
 
 	"cosmossdk.io/math"
 	paramsutils "cosmossdk.io/x/params/client/utils"
+	"github.com/strangelove-ventures/interchaintest/v9"
 	"github.com/strangelove-ventures/interchaintest/v9/chain/cosmos"
 	"github.com/strangelove-ventures/interchaintest/v9/ibc"
 	"github.com/stretchr/testify/require"

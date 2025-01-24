@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
+	signingv1beta1 "cosmossdk.io/api/cosmos/tx/signing/v1beta1"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 	"github.com/strangelove-ventures/interchaintest/v9/dockerutil"
 	"github.com/strangelove-ventures/interchaintest/v9/testutil"
@@ -179,7 +179,7 @@ func (b *Broadcaster) defaultTxFactory(clientCtx client.Context, account client.
 	return tx.Factory{}.
 		WithAccountNumber(account.GetAccountNumber()).
 		WithSequence(account.GetSequence()).
-		WithSignMode(signing.SignMode_SIGN_MODE_DIRECT).
+		WithSignMode(signingv1beta1.SignMode_SIGN_MODE_DIRECT).
 		WithGasAdjustment(chainConfig.GasAdjustment).
 		WithGas(flags.DefaultGasLimit).
 		WithGasPrices(chainConfig.GasPrices).

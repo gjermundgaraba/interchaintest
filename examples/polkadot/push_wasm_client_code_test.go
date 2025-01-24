@@ -12,6 +12,7 @@ import (
 	"cosmossdk.io/math"
 	govv1beta1 "cosmossdk.io/x/gov/types/v1beta1"
 	"github.com/icza/dyno"
+	"github.com/strangelove-ventures/interchaintest/v9"
 	"github.com/strangelove-ventures/interchaintest/v9/chain/cosmos"
 	"github.com/strangelove-ventures/interchaintest/v9/ibc"
 	"github.com/strangelove-ventures/interchaintest/v9/testreporter"
