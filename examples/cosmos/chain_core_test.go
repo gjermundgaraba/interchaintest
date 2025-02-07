@@ -288,7 +288,12 @@ func testBank(ctx context.Context, t *testing.T, chain *cosmos.CosmosChain, user
 
 	// send 1 token
 	sendAmt := int64(1)
-	_, err = sendTokens(ctx, chain, users[0], users[1], "", sendAmt)
+	ibcWalletAmount := ibc.WalletAmount{
+		Address: users[1].FormattedAddress(),
+		Denom:   chain.Config().Denom,
+		Amount:  sdkmath.NewInt(sendAmt),
+	}
+	chain.GetNode().BankSend(ctx, users[0].KeyName(), ibcWalletAmount)
 	require.NoError(t, err)
 
 	// send multiple

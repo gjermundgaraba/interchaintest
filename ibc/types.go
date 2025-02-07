@@ -12,7 +12,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module/testutil"
 	ibcexported "github.com/cosmos/ibc-go/v9/modules/core/03-connection/types"
-	"github.com/docker/docker/api/types"
+	dockerimage "github.com/docker/docker/api/types/image"
 	"github.com/docker/docker/client"
 )
 
@@ -300,7 +300,7 @@ func (i DockerImage) PullImage(ctx context.Context, client *client.Client) error
 	ref := i.Ref()
 	_, _, err := client.ImageInspectWithRaw(ctx, ref)
 	if err != nil {
-		rc, err := client.ImagePull(ctx, ref, types.ImagePullOptions{})
+		rc, err := client.ImagePull(ctx, ref, dockerimage.PullOptions{})
 		if err != nil {
 			return fmt.Errorf("pull image %s: %w", ref, err)
 		}
@@ -371,7 +371,6 @@ type RelayerImplementation int64
 const (
 	CosmosRly RelayerImplementation = iota
 	Hermes
-	Hyperspace
 )
 
 // ChannelFilter provides the means for either creating an allowlist or a denylist of channels on the src chain
