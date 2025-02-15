@@ -24,8 +24,8 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	paramsutils "github.com/cosmos/cosmos-sdk/x/params/client/utils"
-	clienttypes "github.com/cosmos/ibc-go/v9/modules/core/02-client/types" // nolint:staticcheck
-	chanTypes "github.com/cosmos/ibc-go/v9/modules/core/04-channel/types"
+	clienttypes "github.com/cosmos/ibc-go/v10/modules/core/02-client/types" // nolint:staticcheck
+	chanTypes "github.com/cosmos/ibc-go/v10/modules/core/04-channel/types"
 	dockerimage "github.com/docker/docker/api/types/image"
 	volumetypes "github.com/docker/docker/api/types/volume"
 	"github.com/docker/docker/client"

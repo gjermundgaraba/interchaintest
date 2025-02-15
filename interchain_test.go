@@ -22,8 +22,8 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest"
 
-	transfertypes "github.com/cosmos/ibc-go/v9/modules/apps/transfer/types"
-	clienttypes "github.com/cosmos/ibc-go/v9/modules/core/02-client/types" // nolint:staticcheck
+	transfertypes "github.com/cosmos/ibc-go/v10/modules/apps/transfer/types"
+	clienttypes "github.com/cosmos/ibc-go/v10/modules/core/02-client/types" // nolint:staticcheck
 )
 
 func TestInterchain_DuplicateChain_CosmosRly(t *testing.T) {
@@ -317,13 +317,12 @@ func broadcastTxCosmosChainTest(t *testing.T, relayerImpl ibc.RelayerImplementat
 		msg := transfertypes.NewMsgTransfer(
 			"transfer",
 			"channel-0",
-			sdk.NewCoins(transferAmount),
+			transferAmount,
 			testUser.FormattedAddress(),
 			testUser.(*cosmos.CosmosWallet).FormattedAddressWithPrefix(gaia1.Config().Bech32Prefix),
 			clienttypes.NewHeight(1, 1000),
 			0,
 			memo,
-			nil,
 		)
 		resp, err := cosmos.BroadcastTx(ctx, b, testUser.(*cosmos.CosmosWallet), msg)
 		require.NoError(t, err)

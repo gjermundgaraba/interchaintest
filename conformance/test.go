@@ -36,7 +36,7 @@ import (
 	"time"
 
 	"cosmossdk.io/math"
-	transfertypes "github.com/cosmos/ibc-go/v9/modules/apps/transfer/types"
+	transfertypes "github.com/cosmos/ibc-go/v10/modules/apps/transfer/types"
 	"github.com/docker/docker/client"
 	"github.com/strangelove-ventures/interchaintest/v8"
 	"github.com/strangelove-ventures/interchaintest/v8/chain/cosmos"

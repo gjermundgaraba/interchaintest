@@ -11,7 +11,7 @@ import (
 	"cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module/testutil"
-	ibcexported "github.com/cosmos/ibc-go/v9/modules/core/03-connection/types"
+	ibcexported "github.com/cosmos/ibc-go/v10/modules/core/03-connection/types"
 	dockerimage "github.com/docker/docker/api/types/image"
 	"github.com/docker/docker/client"
 )
