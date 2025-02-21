@@ -20,7 +20,6 @@ import (
 	paramsclient "github.com/cosmos/cosmos-sdk/x/params/client"
 	"github.com/cosmos/cosmos-sdk/x/slashing"
 	"github.com/cosmos/cosmos-sdk/x/staking"
-	"github.com/cosmos/ibc-go/modules/capability"
 
 	transfer "github.com/cosmos/ibc-go/v10/modules/apps/transfer"
 	ibccore "github.com/cosmos/ibc-go/v10/modules/core"
@@ -33,7 +32,6 @@ func DefaultEncoding() testutil.TestEncodingConfig {
 		auth.AppModuleBasic{},
 		genutil.NewAppModuleBasic(genutiltypes.DefaultMessageValidator),
 		bank.AppModuleBasic{},
-		capability.AppModuleBasic{},
 		staking.AppModuleBasic{},
 		mint.AppModuleBasic{},
 		distr.AppModuleBasic{},
